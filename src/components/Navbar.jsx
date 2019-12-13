@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
-import { useDarkMode } from '../utils';
+import React, { useEffect } from 'react';
+import { useDarkMode} from '../utils';
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useDarkMode(false);
+  const [darkMode, setDarkMode] = useDarkMode(localStorage.getItem('dark') || false);
+
+  // Set current darkMode to previous value on componentDidMount
+  useEffect(() => localStorage.getItem('dark') === 'true' ? setDarkMode(true) : console.log(false), []);
+
   const toggleMode = e => {
     e.preventDefault();
     setDarkMode(!darkMode);
