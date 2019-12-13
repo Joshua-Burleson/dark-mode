@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
-import { useDarkMode} from '../utils';
+// import { useDarkMode} from '../utils';
 
-const Navbar = () => {
-  const [darkMode, setDarkMode] = useDarkMode(localStorage.getItem('dark') || false);
-
+const Navbar = (props) => {
+  
   // Set current darkMode to previous value on componentDidMount
-  useEffect(() => localStorage.getItem('dark') === 'true' ? setDarkMode(true) : console.log(false), []);
+  useEffect(() => localStorage.getItem('dark') === 'true' ? props.setDarkMode(true) : console.log(false), []);
 
   const toggleMode = e => {
     e.preventDefault();
-    setDarkMode(!darkMode);
+    props.setDarkMode(!props.darkMode);
   };
   return (
     <nav className="navbar">
@@ -17,7 +16,7 @@ const Navbar = () => {
       <div className="dark-mode__toggle">
         <div
           onClick={toggleMode}
-          className={darkMode ? 'toggle toggled' : 'toggle'}
+          className={props.darkMode ? 'toggle toggled' : 'toggle'}
         />
       </div>
     </nav>
