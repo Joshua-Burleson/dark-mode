@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 // import { useDarkMode} from '../utils';
 
 const Navbar = (props) => {
-  
+  console.log('Navbar: ', props.darkMode === true)
   // Set current darkMode to previous value on componentDidMount
-  useEffect(() => localStorage.getItem('dark') === 'true' ? props.setDarkMode(true) : console.log(false), []);
+  useEffect(() => JSON.parse(localStorage.getItem('dark')) ? props.setDarkMode(true) : console.log(false), []);
 
   const toggleMode = e => {
     e.preventDefault();

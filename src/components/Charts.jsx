@@ -2,6 +2,7 @@ import React from "react";
 import Chart from "./Chart";
 
 const Charts = (props) => {
+  console.log('in charts: ', props.darkMode)
   return (
     <div className="charts">
       {props.coinData.map(coin => (
